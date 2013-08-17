@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Barber Shop</title>
+  </head>
+  <body>
+    <canvas id="game"></canvas>
+    <script>
+      var require = {
+          baseUrl: 'js',
+          paths: {
+              dima: 'lib/dima/src/core',
+          },
+          shim: {
+              dima: {
+                  exports: 'dima'
+              }
+          }
+      };
+    </script>
+    <script data-main="barber_shop/game.js" src="js/lib/requirejs/require.js"></script>
+  </body>
+</html>
