@@ -11,10 +11,14 @@
           baseUrl: 'js',
           paths: {
               dima: 'lib/dima/src/core',
+              keymaster: 'lib/keymaster/keymaster.min'
           },
           shim: {
               dima: {
                   exports: 'dima'
+              },
+              keymaster: {
+                  exports: 'key'
               }
           }
       };

@@ -3,6 +3,7 @@
     "version": "0.1.0",
     "dependencies": {
         "requirejs": "~2.1.8",
-        "dima": "DerekRies/dima"
+        "dima": "DerekRies/dima",
+        "keymaster": "madrobby/keymaster"
     }
 }
