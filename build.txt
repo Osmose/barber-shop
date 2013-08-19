@@ -1,0 +1,13 @@
+
+js/bootstrap.js
+----------------
+/Users/mkelly/Projects/barber-shop/bower_components/almond/almond.js
+/Users/mkelly/Projects/barber-shop/bower_components/dima/src/core.js
+/Users/mkelly/Projects/barber-shop/bower_components/keymaster/keymaster.js
+js/core/drawing.js
+js/entities/background.js
+/Users/mkelly/Projects/barber-shop/bower_components/lodash/dist/lodash.js
+js/core/movement.js
+js/entities/player.js
+js/game.js
+js/bootstrap.js
