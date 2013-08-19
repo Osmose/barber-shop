@@ -15,8 +15,8 @@ If you also have [Grunt](http://gruntjs.com/) installed there's a convenient ser
 pages in a web browser.
 
 3. Install Grunt and the plugins locally: `npm install`
-4. Run the development server with `grunt connect`. It should be available at
-   http://localhost:8080.
+4. Run the development server with `grunt runserver`. It should be available at
+   http://localhost:8000.
 
 ## License
 
