@@ -1,6 +1,6 @@
 # barber-shop
 
-A game for the ages.
+A game for the ages. [Catch it here](http://mkelly.me/barber-shop/).
 
 ## Developer Setup
 
@@ -31,5 +31,5 @@ The `grunt deploy` command will run the `build` command and then deploy the buil
 
 ## License
 
-barber-shop is licensed under the [MIT License](http://opensource.org/licenses/MIT). See `LICNESE`
+barber-shop is licensed under the [MIT License](http://opensource.org/licenses/MIT). See `LICENSE`
 for details.
