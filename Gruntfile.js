@@ -1,16 +1,44 @@
 module.exports = function(grunt) {
     var connect = require('connect');
+    var path = require('path');
 
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
-        connect: {
-            server: {
+        requirejs: {
+            compile: {
                 options: {
-                    keepalive: true,
-                    port: 8000,
-                    base: '.'
+                    appDir: 'src',
+                    dir: 'dist',
+                    mainConfigFile: 'src/js/bootstrap.js',
+                    name: 'bootstrap',
+                    include: ['almond'],
+                    wrap: true,
+                    removeCombined: true,
+                    paths: {
+                        dima: path.resolve('bower_components/dima/src/core'),
+                        keymaster: path.resolve('bower_components/keymaster/keymaster'),
+                        lodash: path.resolve('bower_components/lodash/dist/lodash'),
+                        almond: path.resolve('bower_components/almond/almond'),
+                    }
                 }
             }
+        },
+        preprocess: {
+            build: {
+                src: './src/index.html',
+                dest: './dist/index.html',
+                options: {
+                    context: {
+                        development: false
+                    }
+                }
+            }
+        },
+        'gh-pages': {
+            options: {
+                base: 'dist'
+            },
+            src: ['**']
         }
     });
 
@@ -21,8 +49,8 @@ module.exports = function(grunt) {
         connect()
             .use(connect.static('src'))
             .use(connect.directory('src', {icons: true}))
-            .use('/js/lib', connect.static('bower_components'))
-            .use('/js/lib', connect.directory('bower_components', {icons: true}))
+            .use('/js/vendor', connect.static('bower_components'))
+            .use('/js/vendor', connect.directory('bower_components', {icons: true}))
             .use(connect.logger())
             .listen(port)
             .on('listening', function() {
@@ -37,5 +65,10 @@ module.exports = function(grunt) {
             });
     });
 
+    grunt.loadNpmTasks('grunt-contrib-requirejs');
+    grunt.loadNpmTasks('grunt-preprocess');
+    grunt.loadNpmTasks('grunt-gh-pages');
+    grunt.registerTask('build', ['requirejs', 'preprocess:build']);
+    grunt.registerTask('deploy', ['build', 'gh-pages']);
     grunt.registerTask('default', ['runserver']);
 };

@@ -6,24 +6,9 @@
   </head>
   <body>
     <canvas id="game"></canvas>
-    <script>
-      var require = {
-          baseUrl: 'js',
-          paths: {
-              dima: 'lib/dima/src/core',
-              keymaster: 'lib/keymaster/keymaster.min',
-              lodash: 'lib/lodash/dist/lodash.min'
-          },
-          shim: {
-              dima: {
-                  exports: 'dima'
-              },
-              keymaster: {
-                  exports: 'key'
-              }
-          }
-      };
-    </script>
-    <script data-main="game.js" src="js/lib/requirejs/require.js"></script>
+    <!-- @if development -->
+    <script src="js/vendor/requirejs/require.js"></script>
+    <!-- @endif -->
+    <script src="js/bootstrap.js"></script>
   </body>
 </html>
