@@ -27,9 +27,23 @@ define(function(require) {
         dima.addSystem('applyVelocity');
         dima.addSystem('drawBackground');
         dima.addSystem('drawBox');
+        dima.addSystem('debugDrawCollisionMap');
 
         player.create(20, 20);
         background.create('#FFFF88');
+
+        var map = dima.createEntity();
+        dima.attachComponentTo('collisionMap', map).initialize([
+            [0, 0, 0, 0, 0, 0, 0, 0, 1, 0],
+            [0, 0, 0, 0, 0, 1, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 1, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 1, 1, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 1, 0, 0, 1, 0, 0, 0],
+            [1, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [1, 0, 0, 0, 0, 1, 0, 1, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        ]);
 
         function update() {
             dima.update();

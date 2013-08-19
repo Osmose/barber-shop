@@ -1,4 +1,5 @@
 define(function(require) {
+    var _ = require('lodash');
     var dima = require('dima');
     var key = require('keymaster');
 
@@ -59,6 +60,50 @@ define(function(require) {
                         velocity.x += movement.speed;
                     }
                 }
+            }
+        };
+    });
+
+    dima.component('collisionMap', function() {
+        function CollisionMap() {
+            this.map = null;
+            this.tileWidth = 16;
+            this.tileHeight = 16;
+            this.mapWidth = 10;
+            this.mapHeight = 9;
+            this.debugDraw = false;
+        }
+
+        CollisionMap.prototype = {
+            initialize: function(map, options) {
+                this.map = map;
+                _.extend(this, options);
+            }
+        };
+
+        return CollisionMap;
+    });
+
+    dima.system('debugDrawCollisionMap', function() {
+        return {
+            requires: ['collisionMap'],
+            process: function(collection) {
+                var ctx = dima.getContext();
+                ctx.save();
+                ctx.fillStyle = '#000000';
+                _.forEach(collection, function(collisionMap) {
+                    _.forEach(collisionMap.map, function(row, y) {
+                        _.forEach(row, function(tile, x) {
+                            if (tile) {
+                                var tileX = x * collisionMap.tileWidth;
+                                var tileY = y * collisionMap.tileHeight;
+                                ctx.fillRect(tileX, tileY,
+                                             collisionMap.tileWidth, collisionMap.tileHeight);
+                            }
+                        });
+                    });
+                });
+                ctx.restore();
             }
         };
     });
